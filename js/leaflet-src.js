@@ -2483,6 +2483,11 @@ L.TileLayer = L.Class.extend({
 		return this;
 	},
 
+	removeTo: function (map) {
+		map.removeLayer(this);
+		return this;
+	},
+
 	onRemove: function (map) {
 		if(!this._container){ return; }
 		this._container.parentNode.removeChild(this._container);

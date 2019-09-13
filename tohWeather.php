@@ -114,36 +114,69 @@
         W.store = new Object();
         W.store.set = function(key, value){
             if(key == "overlay" && value == "clouds"){
+                
+                Clouds.removeTo(map);
+                Precipitation.removeTo(map);
+                Pressure.removeTo(map);
+                Wind.removeTo(map);
+                Temp.removeTo(map);
+
                 Clouds.addTo(map);
-                Precipitation.onRemove(map);
-                Pressure.onRemove(map);
-                Wind.onRemove(map);
-                Temp.onRemove(map);
             }else if(key == "overlay" && value == "rain"){
+                Clouds.removeTo(map);
+                Precipitation.removeTo(map);
+                Pressure.removeTo(map);
+                Wind.removeTo(map);
+                Temp.removeTo(map);
+
                 Precipitation.addTo(map);
-                Clouds.onRemove(map);
-                Pressure.onRemove(map);
-                Wind.onRemove(map);
-                Temp.onRemove(map);
             }else if(key == "overlay" && value == "pressure"){
-                Clouds.addTo(map);
-                Precipitation.onRemove(map);
-                Pressure.onRemove(map);
-                Wind.onRemove(map);
-                Temp.onRemove(map);
+                Clouds.removeTo(map);
+                Precipitation.removeTo(map);
+                Pressure.removeTo(map);
+                Wind.removeTo(map);
+                Temp.removeTo(map);
+
+                Pressure.addTo(map);
             }else if(key == "overlay" && value == "wind"){
+                Clouds.removeTo(map);
+                Precipitation.removeTo(map);
+                Pressure.removeTo(map);
+                Wind.removeTo(map);
+                Temp.removeTo(map);
+
                 Wind.addTo(map);
-                Clouds.onRemove(map);
-                Precipitation.onRemove(map);
-                Pressure.onRemove(map);
-                Temp.onRemove(map);
             }else if(key == "overlay" && value == "temp"){
-                Wind.onRemove(map);
-                Clouds.onRemove(map);
-                Precipitation.onRemove(map);
-                Pressure.onRemove(map);
+                Clouds.removeTo(map);
+                Precipitation.removeTo(map);
+                Pressure.removeTo(map);
+                Wind.removeTo(map);
+                Temp.removeTo(map);
+
                 Temp.addTo(map);
             }    
+        }
+
+        // setInterval(test, 5000);
+
+        function test(){
+            var rand = Math.floor(Math.random() * 4) + 1;
+            if(rand == 1){
+                alert("temp");
+                W.store.set("overlay", "temp");
+            }else if(rand == 2){
+                alert("wind");
+                W.store.set("overlay", "wind");
+            }else if(rand == 3){
+                alert("pressure");
+                W.store.set("overlay", "pressure");
+            }else if(rand == 4){
+                alert("rain");
+                W.store.set("overlay", "rain");
+            }else{
+                alert("clouds");
+                W.store.set("overlay", "clouds");
+            }
         }
 
         var overlays = {"Temperature": Temp, "Precipitation": Precipitation, "Clouds": Clouds, "Pressure": Pressure, "Wind": Wind};
