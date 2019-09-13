@@ -61,6 +61,7 @@
         var lng = <?php if(isset($_GET["lng"])) { echo $_GET["lng"]; }else { echo "105.7938183"; }?>;
         var zoom = <?php if(isset($_GET["z"])) { echo $_GET["z"]; }else { echo "8"; }?>;
         var map = L.map('map').setView([lat, lng], zoom);
+        var currentOverlay = "temp";
 
         
         //http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=d9cfe451d5a775abaf178aec4951b4b0
@@ -112,9 +113,14 @@
 
         var W = new Object();
         W.store = new Object();
+        W.maps = new Object();
+        W.maps.setView = function(latlng){
+            window.location.href = "http://radar.tohapp.com/en/apiv2/tohWeather.php?lat="+latlng[0]+"&lng="+latlng[1]+"&z=8&overlay="+currentOverlay;
+        }
+
         W.store.set = function(key, value){
             if(key == "overlay" && value == "clouds"){
-                
+                currentOverlay = "clouds";
                 Clouds.removeTo(map);
                 Precipitation.removeTo(map);
                 Pressure.removeTo(map);
@@ -123,6 +129,7 @@
 
                 Clouds.addTo(map);
             }else if(key == "overlay" && value == "rain"){
+                currentOverlay = "rain";
                 Clouds.removeTo(map);
                 Precipitation.removeTo(map);
                 Pressure.removeTo(map);
@@ -131,6 +138,7 @@
 
                 Precipitation.addTo(map);
             }else if(key == "overlay" && value == "pressure"){
+                currentOverlay = "pressure";
                 Clouds.removeTo(map);
                 Precipitation.removeTo(map);
                 Pressure.removeTo(map);
@@ -139,6 +147,7 @@
 
                 Pressure.addTo(map);
             }else if(key == "overlay" && value == "wind"){
+                currentOverlay = "wind";
                 Clouds.removeTo(map);
                 Precipitation.removeTo(map);
                 Pressure.removeTo(map);
@@ -147,6 +156,7 @@
 
                 Wind.addTo(map);
             }else if(key == "overlay" && value == "temp"){
+                currentOverlay = "temp";
                 Clouds.removeTo(map);
                 Precipitation.removeTo(map);
                 Pressure.removeTo(map);
@@ -157,7 +167,7 @@
             }    
         }
 
-        // setInterval(test, 5000);
+        // setInterval(test2, 3000);
 
         function test(){
             var rand = Math.floor(Math.random() * 4) + 1;
@@ -176,6 +186,20 @@
             }else{
                 alert("clouds");
                 W.store.set("overlay", "clouds");
+            }
+        }
+
+        function test2(){
+            var rand = Math.floor(Math.random() * 4) + 1;
+            alert(rand);
+            if(rand == 1){
+                W.maps.setView([21.0012507, 105.7938183]);
+            }else if(rand == 2){
+                W.maps.setView([-6.2297279, 106.6890855]);
+            }else if(rand == 3){
+                W.maps.setView([40.6971477, -74.2605596]);
+            }else if(rand == 4){
+                W.maps.setView([51.5283063, -0.3824692]);
             }
         }
 
