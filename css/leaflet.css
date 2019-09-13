@@ -123,6 +123,7 @@
 	}
 .leaflet-right .leaflet-control {
 	float: right;
+	display: none;
 	}
 .leaflet-top .leaflet-control {
 	margin-top: 10px;
@@ -136,6 +137,9 @@
 .leaflet-right .leaflet-control {
 	margin-right: 10px;
 	}
+.leaflet-iconLayers{
+	display: none;
+}
 
 
 /* zoom and fade animations */
@@ -484,6 +488,11 @@
 .leaflet-oldie .leaflet-popup-tip {
 	border: 1px solid #999;
 	}
+
+.leaflet-control-zoom{
+	position: fixed;
+    right: 10px;
+}
 
 
 /* div icon */
