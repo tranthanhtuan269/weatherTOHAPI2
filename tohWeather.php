@@ -59,7 +59,7 @@
     <script>
         var lat = <?php if(isset($_GET["lat"])) { echo $_GET["lat"]; }else { echo "21.0012507"; }?>;
         var lng = <?php if(isset($_GET["lng"])) { echo $_GET["lng"]; }else { echo "105.7938183"; }?>;
-        var zoom = <?php if(isset($_GET["z"])) { echo $_GET["z"]; }else { echo "8"; }?>;
+        var zoom = <?php if(isset($_GET["z"])) { echo $_GET["z"]; }else { echo "5"; }?>;
         var map = L.map('map').setView([lat, lng], zoom);
         var currentOverlay = "temp";
 
@@ -115,7 +115,7 @@
         W.store = new Object();
         W.maps = new Object();
         W.maps.setView = function(latlng){
-            map.setView([latlng[0], latlng[1]], 8);
+            map.setView([latlng[0], latlng[1]], 5);
             // window.location.href = "http://radar.tohapp.com/en/apiv2/tohWeather.php?lat="+latlng[0]+"&lng="+latlng[1]+"&z=8&overlay="+currentOverlay;
         }
 
