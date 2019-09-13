@@ -146,10 +146,6 @@
             }    
         }
 
-
-        Clouds.onRemove(map);
-        Temp.addTo(map);
-
         var overlays = {"Temperature": Temp, "Precipitation": Precipitation, "Clouds": Clouds, "Pressure": Pressure, "Wind": Wind};
 
         L.control.layers(overlays, null, {collapsed:false}).addTo(map);
