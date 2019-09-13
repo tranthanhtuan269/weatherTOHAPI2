@@ -48,9 +48,9 @@
 
     </script>
     <script>
-        var lat = <?php echo $_GET["lat"];?>;
-        var lng = <?php echo $_GET["lng"];?>;
-        var zoom = <?php echo $_GET["z"];?>;
+        var lat = <?php if(isset($_GET["lat"])) { echo $_GET["lat"]; }else { echo "21.0012507"; }?>;
+        var lng = <?php if(isset($_GET["lng"])) { echo $_GET["lng"]; }else { echo "105.7938183"; }?>;
+        var zoom = <?php if(isset($_GET["z"])) { echo $_GET["z"]; }else { echo "15"; }?>;
         var map = L.map('map').setView([lat, lng], zoom);
 
         
