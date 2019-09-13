@@ -45,6 +45,15 @@
             })
         };
 
+        function returnAndroid() {
+            if (typeof Android === 'undefined') {
+              return;
+            }else{
+              return Android.returnAndroid('{"layouts" : [{"name" : "clouds"}, {"name" : "rain"}, {"name" : "pressure"}, {"name" : "wind"}, {"name" : "temp"}]}');
+            }
+        }
+        returnAndroid();
+
 
     </script>
     <script>
@@ -86,9 +95,23 @@
         var owm = new L.OWMLayer({key: 'b1b15e88fa797225412429c1c50c122a1'});
         map.addLayer(owm);
 
-        Temp.addTo(map);
+        // [{"name" : "clouds"}, {"name" : "rain"}, {"name" : "pressure"}, {"name" : "wind"}, {"name" : "temp"}]
+        <?php
+            if($_GET["overlay"] == "clouds"){
+                echo "Clouds.addTo(map);";
+            }else if($_GET["overlay"] == "rain"){
+                echo "Precipitation.addTo(map);";
+            }else if($_GET["overlay"] == "pressure"){
+                echo "Pressure.addTo(map);";
+            }else if($_GET["overlay"] == "wind"){
+                echo "Wind.addTo(map);";
+            }else{
+                echo "Temp.addTo(map);";
+            }    
+        ?>
 
         var overlays = {"Temperature": Temp, "Precipitation": Precipitation, "Clouds": Clouds, "Pressure": Pressure, "Wind": Wind};
+
         L.control.layers(overlays, null, {collapsed:false}).addTo(map);
 
         var layers = [];
