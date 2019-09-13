@@ -59,7 +59,7 @@
     <script>
         var lat = <?php if(isset($_GET["lat"])) { echo $_GET["lat"]; }else { echo "21.0012507"; }?>;
         var lng = <?php if(isset($_GET["lng"])) { echo $_GET["lng"]; }else { echo "105.7938183"; }?>;
-        var zoom = <?php if(isset($_GET["z"])) { echo $_GET["z"]; }else { echo "15"; }?>;
+        var zoom = <?php if(isset($_GET["z"])) { echo $_GET["z"]; }else { echo "8"; }?>;
         var map = L.map('map').setView([lat, lng], zoom);
 
         
@@ -109,6 +109,46 @@
                 echo "Temp.addTo(map);";
             }    
         ?>
+
+        var W = new Object();
+        W.store = new Object();
+        W.store.set = function(overlay){
+            if(overlay == "clouds"){
+                Clouds.addTo(map);
+                Precipitation.onRemove(map);
+                Pressure.onRemove(map);
+                Wind.onRemove(map);
+                Temp.onRemove(map);
+            }else if(overlay == "rain"){
+                Precipitation.addTo(map);
+                Clouds.onRemove(map);
+                Pressure.onRemove(map);
+                Wind.onRemove(map);
+                Temp.onRemove(map);
+            }else if(overlay == "pressure"){
+                Clouds.addTo(map);
+                Precipitation.onRemove(map);
+                Pressure.onRemove(map);
+                Wind.onRemove(map);
+                Temp.onRemove(map);
+            }else if(overlay == "wind"){
+                Wind.addTo(map);
+                Clouds.onRemove(map);
+                Precipitation.onRemove(map);
+                Pressure.onRemove(map);
+                Temp.onRemove(map);
+            }else{
+                Wind.onRemove(map);
+                Clouds.onRemove(map);
+                Precipitation.onRemove(map);
+                Pressure.onRemove(map);
+                Temp.addTo(map);
+            }    
+        }
+
+
+        Clouds.onRemove(map);
+        Temp.addTo(map);
 
         var overlays = {"Temperature": Temp, "Precipitation": Precipitation, "Clouds": Clouds, "Pressure": Pressure, "Wind": Wind};
 
