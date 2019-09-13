@@ -115,7 +115,8 @@
         W.store = new Object();
         W.maps = new Object();
         W.maps.setView = function(latlng){
-            window.location.href = "http://radar.tohapp.com/en/apiv2/tohWeather.php?lat="+latlng[0]+"&lng="+latlng[1]+"&z=8&overlay="+currentOverlay;
+            map.setView([latlng[0], latlng[1]], 8);
+            // window.location.href = "http://radar.tohapp.com/en/apiv2/tohWeather.php?lat="+latlng[0]+"&lng="+latlng[1]+"&z=8&overlay="+currentOverlay;
         }
 
         W.store.set = function(key, value){
