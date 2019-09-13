@@ -112,32 +112,32 @@
 
         var W = new Object();
         W.store = new Object();
-        W.store.set = function(overlay){
-            if(overlay == "clouds"){
+        W.store.set = function(key, value){
+            if(key == "overlay" && value == "clouds"){
                 Clouds.addTo(map);
                 Precipitation.onRemove(map);
                 Pressure.onRemove(map);
                 Wind.onRemove(map);
                 Temp.onRemove(map);
-            }else if(overlay == "rain"){
+            }else if(key == "overlay" && value == "rain"){
                 Precipitation.addTo(map);
                 Clouds.onRemove(map);
                 Pressure.onRemove(map);
                 Wind.onRemove(map);
                 Temp.onRemove(map);
-            }else if(overlay == "pressure"){
+            }else if(key == "overlay" && value == "pressure"){
                 Clouds.addTo(map);
                 Precipitation.onRemove(map);
                 Pressure.onRemove(map);
                 Wind.onRemove(map);
                 Temp.onRemove(map);
-            }else if(overlay == "wind"){
+            }else if(key == "overlay" && value == "wind"){
                 Wind.addTo(map);
                 Clouds.onRemove(map);
                 Precipitation.onRemove(map);
                 Pressure.onRemove(map);
                 Temp.onRemove(map);
-            }else{
+            }else if(key == "overlay" && value == "temp"){
                 Wind.onRemove(map);
                 Clouds.onRemove(map);
                 Precipitation.onRemove(map);
