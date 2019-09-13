@@ -2484,6 +2484,7 @@ L.TileLayer = L.Class.extend({
 	},
 
 	onRemove: function (map) {
+		if(!this._container){ return; }
 		this._container.parentNode.removeChild(this._container);
 
 		map.off({
