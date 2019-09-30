@@ -225,7 +225,7 @@
 </html>
 <?php
     }else{
-        $url = "http://radar.tohapp.com/en/radar-mobile?";
+        $url = "http://radar.tohapp.com/en/radar-mobile2?";
         foreach($_GET as $key => $value){
             $url .= $key . '=' . $value . '&';
         }
