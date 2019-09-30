@@ -1,5 +1,5 @@
 ﻿<?php 
-    $arr = ['com.tohsoft.weather.radar.widget.live.forecast', 'com.meteo.weather.forecast.radar.v2'];
+    $arr = ['com.tohsoft.weather.radar.widget.live.forecast'];
     if(isset($_GET["application_id"]) && in_array($_GET["application_id"], $arr)){
 ?>
 <!DOCTYPE html>
