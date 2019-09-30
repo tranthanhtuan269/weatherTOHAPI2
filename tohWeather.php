@@ -1,4 +1,5 @@
 ﻿<?php 
+    var_dump(1);die;
     $arr = ['com.tohsoft.weather.radar.widget.live.forecast'];
     if(isset($_GET["application_id"]) && in_array($_GET["application_id"], $arr)){
 ?>
