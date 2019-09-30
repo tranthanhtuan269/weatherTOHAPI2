@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+    $arr = ['com.tohsoft.weather.radar.widget.live.forecast', 'com.meteo.weather.forecast.radar.v2'];
+    if(isset($_GET["application_id"]) && in_array($_GET["application_id"], $arr)){
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Leaflet-OpenWeatherMap Example</title>
@@ -219,3 +223,13 @@
 
 </body>
 </html>
+<?php
+    }else{
+        $url = "http://radar.tohapp.com/en/radar-mobile?";
+        foreach($_GET as $key => $value){
+            $url .= $key . '=' . $value . '&';
+        }
+        $url = rtrim($url,'&');
+        header("Location: " . $url);
+    }
+?>
