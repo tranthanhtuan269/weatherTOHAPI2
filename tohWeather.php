@@ -8,7 +8,7 @@
         $url = rtrim($url,'&');
         header("Location: " . $url);
     }else{
-        $url = "http://radar.tohapp.com/en/radar-mobile2?";
+        $url = "http://radar.tohapp.com/en/radar-mobile?";
         foreach($_GET as $key => $value){
             $url .= $key . '=' . $value . '&';
         }
