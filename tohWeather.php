@@ -1,10 +1,9 @@
 ﻿<?php
 
 $arr = ['com.wftab.weather.forecast', 'com.wftab.weather.forecast.pro', 'com.tohsoft.weather.sunrise.sunset.gen2', 'com.tohsoft.weather.sunrise.sunset.gen2.pro'];
+$arr = [''];
 
-$arr = ['com.weather.forecast.weatherchannel'];
-
-if(isset($_GET["application_id"]) && in_array($_GET["application_id"], $arr)){
+if(isset($_GET["application_id"]) && count($arr) > 0 && in_array($_GET["application_id"], $arr)){
 	$url = "http://maps.goweatherradar.com/en/widget/1bfe4f546eb8a1d9fbe2f73812e60361e616c57d?";
 	foreach($_GET as $key => $value){
 		$url .= $key . '=' . $value . '&';
@@ -12,7 +11,7 @@ if(isset($_GET["application_id"]) && in_array($_GET["application_id"], $arr)){
 	$url = rtrim($url,'&');
 	header("Location: " . $url);
 }else if(true){
-	$url = "http://goweatherradar.com/index2.php?";
+	$url = "http://maps.goweatherradar.com/en/widget/1bfe4f546eb8a1d9fbe2f73812e60361e616c57d?";
 	foreach($_GET as $key => $value){
 		$url .= $key . '=' . $value . '&';
 	}
